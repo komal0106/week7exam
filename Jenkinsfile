@@ -17,9 +17,6 @@ pipeline{
                 steps{
                     echo 'successfully deployed the application'
                 }
-                else{
-                    echo 'failed to deploy the application'
-                }
         
             }
         }
