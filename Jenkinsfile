@@ -1,5 +1,5 @@
 pipeline{
-    agent any{
+    agent any
         stages{
              stage('Build docker image'){
                 steps{
@@ -10,15 +10,17 @@ pipeline{
             stage('Run docker image'){
                 steps{
                     
-                    bat 'docker run -d -p 5000:5000 myapp:latest'
+                    bat "docker run -d -p 5000:5000 --name  mycontainer myapp:latest"
                 }
             }
-            stage{
-                steps{
+            post{
+                success 
+                {
                     echo 'successfully deployed the application'
                 }
-        
+                failure{
+                    echo 'failed'
             }
         }
-    }
+        }
 }
